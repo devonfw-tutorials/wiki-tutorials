@@ -13,12 +13,12 @@ jobs:
       - name: Checkout tutorial-compiler
         uses: actions/checkout@v2
         with:
-          repository: nikiOstrov/tutorial-compiler
+          repository: devonfw-tutorials/tutorial-compiler
       
       - name: Checkout playbooks
         uses: actions/checkout@v2
         with:
-          repository: nikiOstrov/tutorials
+          repository: devonfw-tutorials/tutorials
           path: playbooks
       
       - uses: actions/setup-node@v2-beta
