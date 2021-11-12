@@ -47,6 +47,9 @@ jobs:
       
       - name: npm install
         run: npm install
+        
+      - name: Install node v. 6.3.1 
+        run: npm install node@6.3.1
 
       - name: run buildRun.sh
         run: sh buildRun.sh -e wiki_eclipse -e wiki_vscode -p ${{ github.event.client_payload.tutorial }}
