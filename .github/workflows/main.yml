@@ -64,6 +64,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          repository: nikiOstrov/devonfw-guide
+          repository: devonfw/devonfw-guide
           event-type: dispatch-update-guide
         
