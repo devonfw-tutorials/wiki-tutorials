@@ -60,3 +60,10 @@ jobs:
       - name: publish tutorials
         run: bash repo/publishTutorials.sh
         
+      - name: Repository dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: nikiOstrov/devonfw-guide
+          event-type: dispatch-update-guide
+        
