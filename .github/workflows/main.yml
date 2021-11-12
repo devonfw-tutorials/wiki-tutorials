@@ -50,7 +50,7 @@ jobs:
         
 
       - name: run buildRun.sh
-        run: sh buildRun.sh -e wiki_eclipse -e wiki_vscode -p ${{ github.event.client_payload.tutorial }}
+        run: sh buildRun.sh -e wiki_eclipse -e wiki_vscode -p testarg
 
       - name: Checkout
         uses: actions/checkout@v2
