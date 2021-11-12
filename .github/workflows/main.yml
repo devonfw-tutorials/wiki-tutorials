@@ -49,7 +49,7 @@ jobs:
         run: npm install
 
       - name: run buildRun.sh
-        run: sh buildRun.sh -e wiki_eclipse -e wiki_vscode -p ${{ github.event.client_payload.tutorial }}
+        run: sh buildRun.sh -e wiki_eclipse -p ${{ github.event.client_payload.tutorial }}
 
       - name: Checkout
         uses: actions/checkout@v2
