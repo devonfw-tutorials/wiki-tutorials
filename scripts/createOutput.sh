@@ -2,7 +2,7 @@ BASEDIR=$(dirname "$0")
 cd $BASEDIR/../
 
 for d in $(find tutorials -name 'target'); do
-	cp -arv $d'/generated-docs/.' './target/generated-docs/'$(echo $d | sed "s:/target::g")
+	cp -arv $d'/generated-docs/.' './target/generated-docs/'$(echo $d | sed "s:/target::g" | sed "s:/generated-docs::g")
 	rm -r $d
 done
 
