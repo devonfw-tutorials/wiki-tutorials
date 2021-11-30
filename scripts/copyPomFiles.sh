@@ -8,7 +8,6 @@ cp $scriptdir/index.asciidoc "index.asciidoc";
 
 for d in */; do
     dirname=$(echo "$d" | sed "s#/##");
-    diralias=$(echo "$dirname" | sed "s/_/-/");
     if [ 'target' != $dirname ]; then
 	
 		#Copy pom and index.asciidoc to wiki folder 
