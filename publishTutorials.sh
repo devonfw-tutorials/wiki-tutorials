@@ -6,6 +6,8 @@ for dir in */; do SPECIFIED_TUTORIALS+=("${dir::-1}"); done
 echo "SPECIFIED_TUTORIALS:\n"
 printf "%s\n" "${SPECIFIED_TUTORIALS[@]}"
 # switches to tutorials repository https://github.com/devonfw-tutorials/tutorials
+
+mkdir -p tutorials 
 cd ../repo/tutorials
 ONLINE_TUTORIALS=()
 for dir in */; do ONLINE_TUTORIALS+=("${dir::-1}"); done
@@ -37,7 +39,6 @@ for tutorial in "${ONLINE_TUTORIALS[@]}"; do
   fi
 done
 
-mkdir -p tutorials 
 #copy all files from * in repo/tutorials (https://github.com/devonfw-tutorials/wiki-tutorials/tutorials)
 cp -r build/output/wiki/*/ repo/tutorials
 cd repo/
