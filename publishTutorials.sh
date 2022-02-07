@@ -1,5 +1,6 @@
 #!/bin/bash
 # start after the folder playbooks is created in the current repository
+echo ls
 cd playbooks
 SPECIFIED_TUTORIALS=()
 for dir in */; do SPECIFIED_TUTORIALS+=("${dir::-1}"); done
