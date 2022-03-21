@@ -90,7 +90,7 @@ function main() {
 	let tutorialsFolder = path.join(__dirname, '..', 'tutorials');
 	let tempFolder = path.join(__dirname, 'temp');
 	let typeFolder = getDirectories(tutorialsFolder);
-	let output = path.join('..', process.argv[2]);
+	let output = path.join('.', process.argv[2]);
 	let types = typeFolder.map( type => {return path.basename(type)});
 	let tutorials = getDirectories(typeFolder[0]).map( type => {return path.basename(type)});
 	
