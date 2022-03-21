@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const https = require('https');
 const pegjs = require("pegjs");
 const child_process = require("child_process");
 var rimraf = require("rimraf");
