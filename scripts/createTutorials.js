@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const pegjs = require("pegjs");
 const child_process = require("child_process");
-var rimraf = require("rimraf");
+const rimraf = require("rimraf");
 
 function downloadFile(url, file) {
 	if (!fs.existsSync(path.dirname(file))){
