@@ -91,7 +91,7 @@ function main() {
 	let typeFolder = getDirectories(tutorialsFolder);
 	let output = path.join('.', process.argv[2]);
 	let types = typeFolder.map( type => {return path.basename(type)});
-	let tutorials = getDirectories(typeFolder[0]).map( type => {return path.basename(type)});
+	let tutorials = getDirectories(typeFolder[0]).map( tutorial => {return path.basename(tutorial)});
 	
 	downloadTutorials(tempFolder, tutorials);
 	tutorialList = parseTutorials(tutorials, tutorialsFolder, tempFolder, types);
