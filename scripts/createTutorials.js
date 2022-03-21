@@ -20,18 +20,18 @@ function getDirectories(srcpath) {
 }
 
 function parseTutorials(tutorials, tutorialsFolder, tempFolder, types){
-	let tutorialList = []
-	let tutorialJson = {}
+	let tutorialList = [];
+	let tutorialJson = {};
 	let def = fs.readFileSync(path.join(tempFolder, 'parser.def'), 'utf8');
     let parser = pegjs.generate(def);
 	for (let tutorial of tutorials){
 		let tempTutorial = fs.readFileSync(path.join(tempFolder, `${tutorial}.asciidoc`), 'utf8');
 		let parseResult = parser.parse(tempTutorial);
-		let tutorialSnippet = {}
+		let tutorialSnippet = {};
 		for (let type of types){
 			tutorialSnippet[type] = fs.readFileSync(path.join(tutorialsFolder, type, tutorial, 'index.asciidoc'), 'utf8');
 		}
-		let title = parseResult[0][2]
+		let title = parseResult[0][2];
 		let subtitle = parseResult[1]? parseResult[1][3]: "";
 		let description = parseResult[3][2].descriptionlines;
 		let paths = tutorialPaths(tutorial);
@@ -44,7 +44,7 @@ function parseTutorials(tutorials, tutorialsFolder, tempFolder, types){
 			description: description,
 			paths: paths,
 			snippets: tutorialSnippet
-		}
+		};
 		tutorialList.push(tutorialJson);
 	}
 	return tutorialList;
@@ -87,10 +87,10 @@ function cleanUp(tempFolder){
 
 function main() {
 	
-	let tutorialsFolder = path.join(__dirname, '..', 'tutorials')
+	let tutorialsFolder = path.join(__dirname, '..', 'tutorials');
 	let tempFolder = path.join(__dirname, 'temp');
 	let typeFolder = getDirectories(tutorialsFolder);
-	let output = path.join('..', process.argv[2])
+	let output = path.join('..', process.argv[2]);
 	let types = typeFolder.map( type => {return path.basename(type)});
 	let tutorials = getDirectories(typeFolder[0]).map( type => {return path.basename(type)});
 	
