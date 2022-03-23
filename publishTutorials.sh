@@ -1,7 +1,7 @@
 #!/bin/bash
 # start after the folder playbooks is created in the current repository
 echo "$(pwd)"
-cd playbooks 
+cd playbooks
 SPECIFIED_TUTORIALS=()
 for dir in */; do SPECIFIED_TUTORIALS+=("${dir::-1}"); done
 echo "SPECIFIED_TUTORIALS:\n"
@@ -17,7 +17,7 @@ printf "%s\n" "${ONLINE_TUTORIALS[@]}"
 
 # delete tutorials, which are not specified anymore
 for tutorial in "${ONLINE_TUTORIALS[@]}"
-do 
+do
   if [[ ! " ${SPECIFIED_TUTORIALS[@]} " =~ " ${tutorial} " ]]; then
       rm -rf "${tutorial}"
       echo "deleted ${tutorial} as not specified anymore in tutorials repository"
