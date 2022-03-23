@@ -8,7 +8,7 @@ echo "SPECIFIED_TUTORIALS:\n"
 printf "%s\n" "${SPECIFIED_TUTORIALS[@]}"
 # switches to tutorials repository https://github.com/devonfw-tutorials/tutorials
 
-mkdir -p tutorials 
+mkdir -p tutorials
 cd ../repo/tutorials
 ONLINE_TUTORIALS=()
 for dir in */; do ONLINE_TUTORIALS+=("${dir::-1}"); done
