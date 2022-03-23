@@ -21,3 +21,4 @@ headRep='<link rel="stylesheet" href="index.css"></head>';
 sed -i "s#$head#$headRep#" "target/generated-docs/index.html";
 
 node scripts/createTutorials.js target/generated-docs/tutorials.json;
+node scripts/createTags.js target/generated-docs/tags.json;
