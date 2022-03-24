@@ -1,16 +1,16 @@
 = Jump start an end-to-end devonfw sample application.
 
+
+
 Jump The Queue is a small application based on the devonfw framework, which you can create yourself by following our simple step-by-step tutorial. By doing so, you will learn about the app development workflow and gain insight into the design of a professional business information system.
 
 
-#
-## Prerequisites
+### Prerequisites
 
 * User should have Java, Angular development experience
 
 
-#
-## Learning goals
+### Learning goals
 
 * After completing this tutorial, you will have learned about a devonfw sample application Jump-The-Queue and its architecture. 
 
@@ -23,11 +23,8 @@ The definition of each step of this tutorial can be found at https://github.com/
 Feel free to report any errors to us or fix them yourself. Errors can be reported by creating an issue in the https://github.com/devonfw-tutorials/tutorials/issues[tutorials repository]. To fix the error fork the repository and create a pull request. Errors in the wiki can be reported and fixed in the https://github.com/devonfw-tutorials/tutorial-compiler[Tutorial-compiler repository].
 You can find a description of what to look for when creating a pull request at the devonfw contribution guide: https://devonfw.com/website/pages/community/community.html#community.asciidoc_contributing-to-devonfw. If you want to create a tutorial you can start with the https://katacoda.com/devonfw/scenarios/create-your-own-tutorial[katacoda tutorial] and read the description for creating your own tutorials: https://github.com/devonfw-tutorials/tutorials/wiki/Development.
 
-
-
-=== devonfw setup
-
-
+== devonfw setup
+ 
 
 If you already installed the devonfw IDE, you can skip this step.
 
@@ -70,11 +67,9 @@ The installer will also ask you if you want to enter secrets for your maven repo
 
 
 
-
-
-=== Clone Repository
+== Clone Repository
 First, clone the Jump-The-Queue Repository.
-
+ 
 
 ==== Prerequisites
 * You need to have Git installed. You can download Git https://git-scm.com/downloads[here] for your OS and install it by following the instructions.
@@ -84,15 +79,17 @@ Open a terminal in your current workspace.
 
 Firstly, you have to move to the directory where the repository should be cloned to.
 If the directory does not exist yet, you can create it by using the `mkdir` command in the terminal.
-In this case execute `mkdir -p C:\devonfw\workspaces\main\tutorial-compiler\build\working\devonfw\workspaces\main`.
+In this case execute `mkdir -p /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main`.
 
-After that, move to the target directory by executing `cd  C:\devonfw\workspaces\main\tutorial-compiler\build\working\devonfw\workspaces\main` in the terminal.
+After that, move to the target directory by executing `cd  /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main` in the terminal.
 
 To clone a Git repository execute `git clone https://github.com/devonfw/jump-the-queue.git` in the terminal.
 
 
 
-== Build and Run Java Server
+== Build and Run Java Server 
+=== Build the Java project with Maven
+ 
 
 
 ==== Prerequisites
@@ -101,7 +98,7 @@ To clone a Git repository execute `git clone https://github.com/devonfw/jump-the
 
 ==== Execution
 
-Now move to your project directory manually or by executing `cd C:\devonfw\workspaces\main\tutorial-compiler\build\working\devonfw\workspaces\main\jump-the-queue\java\jtqj` in the terminal.
+Now move to your project directory manually or by executing `cd /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main/jump-the-queue/java/jtqj` in the terminal.
 Next, use the following command to build the java project.
 
 `mvn clean install`
@@ -112,9 +109,8 @@ Install will then compile, test and package your Java project and copy your buil
 
 
 
-
-
 === Run Java Server
+
 
 
 
@@ -123,7 +119,7 @@ Install will then compile, test and package your Java project and copy your buil
 
 === Starting the server
 
-First, change the current working directory to where your server is located, i.e. `cd C:\devonfw\workspaces\main\tutorial-compiler\build\working\devonfw\workspaces\main\jump-the-queue\java\jtqj\server`.
+First, change the current working directory to where your server is located, i.e. `cd /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main/jump-the-queue/java/jtqj/server`.
 
 Afterwards, use maven to start the server: `mvn spring-boot:run`.
 This command will start the Java server.
@@ -143,10 +139,33 @@ This command should return an `200 OK` header if the service is available.
 Now the Java Server should be running.
 
 
-== Serve the Frontend Server
+=== Install dependencies
+In the next steps we want build and run the Angular Frontend Server. For that you need to install the dependencies first.
+ 
+
+==== Prerequisites
+
+* Install Node.js. You can download Node.js https://nodejs.org/en/download/[here].
+* Installed npm. You can download npm https://www.npmjs.com/get-npm[here] and follow the installation instructions.
+
+==== Execution
+
+You need to be located in the project directory where the package.json file lies.
+For this tutorial it is `/home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main/jump-the-queue/angular`. You can either move there manually and open the terminal there or open the terminal and move there by executing `cd /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main/jump-the-queue/angular`.
+
+Now execute `npm install` in the terminal.
+
+
+This may take some time.
+
+
+
+== Serve the Frontend Server 
+=== Changing of the environment.ts file
 Now build and run the Angular Server.
 The following two steps are only needed in this tutorial. Normally you can simply execute "ng serve", open the https://localhost:4200/ and start using the app.
 In the next step you need to change the Base URL for the REST Services. 
+  
 
 
 ==== Prerequisites
