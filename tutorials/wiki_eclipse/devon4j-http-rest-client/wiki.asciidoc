@@ -1,14 +1,14 @@
 = Develop a devon4j CXF REST Client using Synchronous call
 
-REST (REpresentational State Transfer) is an inter-operable protocol for services that is more lightweight than SOAP. We give best practices that lead to simple, easy and pragmatic &#34;HTTP APIs&#34;.
 
+
+REST (REpresentational State Transfer) is an inter-operable protocol for services that is more lightweight than SOAP. We give best practices that lead to simple, easy and pragmatic &#34;HTTP APIs&#34;.
 
 ## Prerequisites
 
 * User should have development experience in JAVA.
 
 * Basic knowledge of REST.
-
 
 ## Learning Goal
 Here in this tutorial you will learn the following things:
@@ -26,11 +26,8 @@ The definition of each step of this tutorial can be found at https://github.com/
 Feel free to report any errors to us or fix them yourself. Errors can be reported by creating an issue in the https://github.com/devonfw-tutorials/tutorials/issues[tutorials repository]. To fix the error fork the repository and create a pull request. Errors in the wiki can be reported and fixed in the https://github.com/devonfw-tutorials/tutorial-compiler[Tutorial-compiler repository].
 You can find a description of what to look for when creating a pull request at the devonfw contribution guide: https://devonfw.com/website/pages/community/community.html#community.asciidoc_contributing-to-devonfw. If you want to create a tutorial you can start with the https://katacoda.com/devonfw/scenarios/create-your-own-tutorial[katacoda tutorial] and read the description for creating your own tutorials: https://github.com/devonfw-tutorials/tutorials/wiki/Development.
 
-
-
-=== devonfw setup
-
-
+== devonfw setup
+ 
 
 If you already installed the devonfw IDE, you can skip this step.
 
@@ -71,7 +68,8 @@ You can also just execute `.\setup` (Windows) or `bash setup` (Linux) and press 
 
 
 
-== REST
+== REST 
+=== Create a new devon4j project from command promt
 REST (REpresentational State Transfer) is an inter-operable protocol for services that is more lightweight than SOAP.
 
 For implementing REST services we use the JAX-RS standard. As an implementation we recommend CXF. For JSON bindings we use Jackson while XML binding works out-of-the-box with JAXB. To implement a service you write an interface with JAX-RS annotations for the API and a regular implementation class annotated with @Named to make it a spring-bean.
@@ -88,6 +86,8 @@ For more details on devon4j Service Client https://devonfw.com/website/pages/doc
 ## Create the devon4j REST SERVER
 As explained in REST document, With JAX-RS it is important to make sure that each service method is annotated with the proper HTTP annotation(@GET, @POST, etc).
 Let's create devon4j server.
+  
+
 
 ==== Prerequisites
 
@@ -132,8 +132,10 @@ The toplevel pom.xml of the generated project has the following features:
 In next step, you will add configuration to allow basic authentication.
 
 
-== Add configuration to allow basic authentication
+== Add configuration to allow basic authentication 
+=== Changing of the BaseWebSecurityConfig.java file
 Now, You have to modify BaseWebSecurityConfig file to allow application for basic authentication.
+  
 
 
 ==== Prerequisites
@@ -276,8 +278,11 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
-== Create service for REST server
+== Create service for REST server 
+=== Create the VisitormanagementRestService.java file
 Now, you will create VisitormanagementRestService to provide functionality using JAX-RS standard.
+  
+
 
 
 ==== Prerequisites
@@ -325,8 +330,11 @@ To save the file specify the name of the file. Paste `VisitormanagementRestServi
 The last step is to save the file with the *Save* button in the bottom right corner and VisitormanagementRestService.java has been created and filled with some data.
 
 
-== Create implementation class for Service
+== Create implementation class for Service 
+=== Create the VisitormanagementRestServiceImpl.java file
 Now, you will create VisitormanagementRestServiceImpl, the implementation class of VisitormanagementRestService using JAX-RS standard.
+  
+
 
 
 ==== Prerequisites
@@ -372,8 +380,10 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 Here , you can see "VisitormanagementRestServiceImpl.java" is annotated with @Named to make it a spring-bean. To get return response to client "returnResponseToClient()" can be accessed via HTTP GET under the URL path "/visitormanagement/v1/clientrequest". It will return its result (String) as JSON (see @Produces in VisitormanagementRestService).
-== Modify properties files
+== Modify properties files 
+=== Changing of the application.properties file
 Now, you will configure port in application properties.
+  
 
 
 ==== Prerequisites
@@ -435,9 +445,8 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
+=== Changing of the application.properties file
 
-
-=== Changing of the application.properties File
 
 
 ==== Prerequisites
@@ -490,8 +499,10 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
-== Build and Start devon4j REST Server
+== Build and Start devon4j REST Server 
+=== Build the Java project with Maven
 You have successfully built the REST-server. Now, you have to start the build and then, start the server as mentioned below.
+  
 
 
 ==== Prerequisites
@@ -500,7 +511,7 @@ You have successfully built the REST-server. Now, you have to start the build an
 
 ==== Execution
 
-Now move to your project directory manually or by executing `cd C:\devonfw\workspaces\main\tutorial-compiler\build\working\devonfw\workspaces\main\httprestserver` in the terminal.
+Now move to your project directory manually or by executing `cd /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main/httprestserver` in the terminal.
 Next, use the following command to build the java project.
 
 `mvn clean install -Dmaven.test.skip=true`
@@ -513,9 +524,8 @@ We do not need to execute the test cases, so we can skip them by using the optio
 
 
 
-
-
 === Run Java Server
+
 
 
 
@@ -524,7 +534,7 @@ We do not need to execute the test cases, so we can skip them by using the optio
 
 === Starting the server
 
-First, change the current working directory to where your server is located, i.e. `cd C:\devonfw\workspaces\main\tutorial-compiler\build\working\devonfw\workspaces\main\httprestserver\server`.
+First, change the current working directory to where your server is located, i.e. `cd /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main/httprestserver/server`.
 
 Afterwards, use maven to start the server: `mvn spring-boot:run`.
 This command will start the Java server.
@@ -551,8 +561,11 @@ Once, Java server starts running. To test REST-server follow below steps:
 In next step, You have to create devon4j service Client.
 
 
-== Create devon4j REST Client
+== Create devon4j REST Client 
+=== Create a new devon4j project from command promt
 To create devon4j service Client. First, You need to create a sample devon4j project.
+
+  
 
 
 ==== Prerequisites
@@ -609,8 +622,10 @@ You will add below dependency in core folder pom.xml
 ----
 
 
-== Modify POM file
+== Modify POM file 
+=== Changing of the pom.xml file
 Modify pom.xml as below:
+  
 
 
 ==== Prerequisites
@@ -642,8 +657,11 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
-== Create service to invoke server
+== Create service to invoke server 
+=== Create the VisitormanagementRestService.java file
 Now, You will create a Java interface VisitormanagementRestService to invoke inside client.
+  
+
 
 
 ==== Prerequisites
@@ -691,8 +709,11 @@ To save the file specify the name of the file. Paste `VisitormanagementRestServi
 The last step is to save the file with the *Save* button in the bottom right corner and VisitormanagementRestService.java has been created and filled with some data.
 
 
-== Create service for CXF REST Client
+== Create service for CXF REST Client 
+=== Create the TestRestService.java file
 Now, you will create service for client i.e. TestRestService.java to provide functionality using JAX-RS standard.
+  
+
 
 
 ==== Prerequisites
@@ -742,8 +763,11 @@ To save the file specify the name of the file. Paste `TestRestService.java` in t
 The last step is to save the file with the *Save* button in the bottom right corner and TestRestService.java has been created and filled with some data.
 
 
-== Create implementation class for client's service
+== Create implementation class for client&#39;s service 
+=== Create the TestRestServiceImpl.java file
 Now, you will create TestRestServiceImpl, the implementation class of TestRestService using JAX-RS standard.
+
+  
 
 
 
@@ -824,9 +848,11 @@ Here in TestRestServiceImpl, there is a method "callSynchronous" which will call
 With visitormanagementRestService, it is calling the method "returnResponseToClient()" of server.
 The response from server will be stored in "resultFromAPICall" as the return type of result is String.
 After getting response, you can handle the response further in your implementation. Here, you can see that response is getting handled in "showResponse" method.
-== Modify properties for server configuration
+== Modify properties for server configuration 
+=== Changing of the application.properties file
 An application needs to be configurable in order to allow internal setup but also to allow externalized configuration of a deployed package (e.g. integration into runtime environment). 
 Now, You need to modify the content of existing properties files and add configuration for Server.
+  
 
 
 ==== Prerequisites
@@ -895,9 +921,8 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
+=== Changing of the application.properties file
 
-
-=== Changing of the application.properties File
 
 
 ==== Prerequisites
@@ -976,9 +1001,11 @@ The final step is to save the file by selecting *Save* in the file context menu 
 **service.client.app.httprestserver.user.password** :- It is used to set password.
 
 
-== Build devon4j CXF REST Client
+== Build devon4j CXF REST Client 
+=== Build the Java project with Maven
 Now, Let's build and start the service client application.
 This might take some time for application to start.
+  
 
 
 ==== Prerequisites
@@ -987,7 +1014,7 @@ This might take some time for application to start.
 
 ==== Execution
 
-Now move to your project directory manually or by executing `cd C:\devonfw\workspaces\main\tutorial-compiler\build\working\devonfw\workspaces\main\httprestclient` in the terminal.
+Now move to your project directory manually or by executing `cd /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main/httprestclient` in the terminal.
 Next, use the following command to build the java project.
 
 `mvn clean install -Dmaven.test.skip=true`
@@ -1013,8 +1040,7 @@ To test Synchronous method, follow below steps.
 * You will be able to see response "Welcome to REST API world"
 
 
-== Conclusion
-
 
 You have successfully created devon4j CXF REST Client.
 For more details on devon4j follow https://devonfw.com/website/pages/docs/devon4j.asciidoc.html
+

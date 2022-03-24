@@ -1,0 +1,264 @@
+= OpenAPI and Swagger UI generation with Quarkus Smallrye extension
+
+
+
+This tutorial will show you how to include the Quarkus Smallrye OpenAPI extension in Quarkus projects to automatically generate OpenAPI specifications and Swagger UI from your REST APIs.
+For more information about OpenAPI and the Smallrye OpenAPI extension, see the [devon4j documentation](https://github.com/devonfw/devon4j/blob/master/documentation/guide-openapi.asciidoc) or the [official Quarkus guide](https://quarkus.io/guides/openapi-swaggerui).
+
+
+### Prerequisites
+
+* Installed devonfw-ide (or at least Java and Maven installed)
+
+
+### Learning goals
+
+* You will learn how to generate OpenAPI specifications and Swagger UI from REST services
+
+
+
+
+The definition of each step of this tutorial can be found at https://github.com/devonfw-tutorials/tutorials/tree/main/openapi-generation-smallrye/. 
+
+Feel free to report any errors to us or fix them yourself. Errors can be reported by creating an issue in the https://github.com/devonfw-tutorials/tutorials/issues[tutorials repository]. To fix the error fork the repository and create a pull request. Errors in the wiki can be reported and fixed in the https://github.com/devonfw-tutorials/tutorial-compiler[Tutorial-compiler repository].
+You can find a description of what to look for when creating a pull request at the devonfw contribution guide: https://devonfw.com/website/pages/community/community.html#community.asciidoc_contributing-to-devonfw. If you want to create a tutorial you can start with the https://katacoda.com/devonfw/scenarios/create-your-own-tutorial[katacoda tutorial] and read the description for creating your own tutorials: https://github.com/devonfw-tutorials/tutorials/wiki/Development.
+
+== devonfw setup
+ 
+
+If you already installed the devonfw IDE, you can skip this step.
+
+==== Prerequisites
+
+* You need to have a tool to extract `.tar.gz` files. On Windows lower Windows 10 use can use https://www.7-zip.org/7-zip[7-Zip]. The most other platforms support this feature by default.
+* You need to have https://git-scm.com/[Git] and https://curl.se/[Curl] installed. On Windows you have to install https://git-scm.com/download/win[Git for Windows]. On Linux systems you might need to install the following tools in case they are not present (`sudo apt-get install git curl` or `sudo yum install git-core curl`)
+
+Create a new directory in the location where you want to install the devonfw IDE. If you are using the terminal, navigate to this location and run `mkdir devonfw` and `cd devonfw` to create the directory and navigate into it.
+
+==== Download
+
+
+
+Now you have to download the latest release of the devonfw IDE. You can download it from https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz[here].
+
+In the Terminal execute `Invoke-WebRequest -OutFile devonfw-ide-scripts.tar.gz 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz'` if you are using Windows.
+
+On Linux use `wget -c 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz' -O devonfw-ide-scripts.tar.gz -`.
+
+On MacOS, depending on your setup, you can either use the same `wget` command specified for the Linux installation (install wget via homebrew `brew install wget`) or use any other available download command i.e. `curl -o devonfw-ide-scripts.tar.gz https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz`.
+
+
+
+After that you need to extract the downloaded file. To do this, run `tar -xvzf devonfw-ide-scripts.tar.gz`. Or you can simply use a tool (e.g. 7-Zip) for this.
+
+==== Setup
+
+First, you need to prepare a settings repository to specify the tools to be installed within the devonfw IDE. Normally this is done by your project. If you just want to test the devonfw IDE, you can use the default URL, which is https://github.com/devonfw/ide-settings.
+
+For now clone the repository on https://github.com/devonfw/ide-settings or your own fork of it.
+For this tutorial you have to write `DEVON_IDE_TOOLS=(java mvn)` into the devon.properties file of the cloned settings repository. These settings will now be passed into the installation process of the devonfw-ide.
+Start the setup process by executing `.\setup 'path/to/settings'` (Windows) or `bash setup path/to/settings.git` (Linux).
+
+You can also just execute `.\setup` (Windows) or `bash setup` (Linux) and press Enter when the setup assistent asks for the URL to the settings repository. This will also download the default settings and install the default tools within the devonfw IDE.
+
+
+The installer will also ask you if you want to enter secrets for your maven repository. You can simply skip this by pressing 'Enter'.
+ 
+
+
+
+== Clone quarkus-quickstarts repository 
+=== Clone Repository
+First, clone the `quarkus-quickstarts` repository from GitHub. It contains several sample applications for many extensions to Quarkus. We will use a simple REST service for this tutorial and customize the application accordingly.
+  
+
+
+==== Prerequisites
+* You need to have Git installed. You can download Git https://git-scm.com/downloads[here] for your OS and install it by following the instructions.
+
+==== Download
+Open a terminal in your current workspace.
+
+Firstly, you have to move to the directory where the repository should be cloned to.
+If the directory does not exist yet, you can create it by using the `mkdir` command in the terminal.
+In this case execute `mkdir -p /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main`.
+
+After that, move to the target directory by executing `cd  /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main` in the terminal.
+
+To clone a Git repository execute `git clone https://github.com/quarkusio/quarkus-quickstarts.git` in the terminal.
+
+
+
+== Add the extension 
+=== Changing of the pom.xml file
+The next step is to add the Smallrye OpenAPI extension to the project. Open the `pom.xml` file of project in the folder `rest-json-quickstart`. Add the extension `quarkus-smallrye-openapi` to the list of dependencies.
+  
+
+
+==== Prerequisites
+* Any editor that can edit files
+
+==== Changing of pom.xml in any Editor
+
+
+To change the file pom.xml, you have to open it in any editor. 
+Open the editor and choose in the file context menu in the top left corner *Open ...* mostly also keyboard shortcut ctrl+o works. 
+Based on your operating system a window with the file explorer opens. You have to navigate to pom.xml and select it.  Select the right folder manually by selecting the folders from the path `devonfw/workspaces/main/quarkus-quickstarts/rest-json-quickstart` and select the file `pom.xml`. 
+You confirm this with the *Open* button in the bottom right corner pom.xml will be opened in a new editor window.
+
+Copy the following text.
+[source, ]
+----
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" 
+  xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.acme</groupId>
+  <artifactId>rest-json-quickstart</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <properties>
+    <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
+    <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
+    <quarkus.platform.version>2.5.1.Final</quarkus.platform.version>
+    <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>${quarkus.platform.group-id}</groupId>
+        <artifactId>${quarkus.platform.artifact-id}</artifactId>
+        <version>${quarkus.platform.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy-jackson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-openapi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-junit5</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${surefire-plugin.version}</version>
+        <configuration>
+          <systemPropertyVariables>
+            <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+            <maven.home>${maven.home}</maven.home>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>${quarkus.platform.group-id}</groupId>
+        <artifactId>quarkus-maven-plugin</artifactId>
+        <version>${quarkus.platform.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>build</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>native</id>
+      <activation>
+        <property>
+          <name>native</name>
+        </property>
+      </activation>
+      <properties>
+        <quarkus.package.type>native</quarkus.package.type>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>${surefire-plugin.version}</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>integration-test</goal>
+                  <goal>verify</goal>
+                </goals>
+                <configuration>
+                  <systemPropertyVariables>
+                    <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
+                    <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                    <maven.home>${maven.home}</maven.home>
+                  </systemPropertyVariables>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>
+----
+
+
+Now insert the copied text into the opened pom.xml. 
+The final step is to save the file by selecting *Save* in the file context menu or by using the keyboard shortcut ctrl+s and pom.xml has been changed.
+
+
+
+== Create the application.properties file
+By default, the Swagger UI is enabled only in development mode. To enable it in all cases, set the property `quarkus.swagger-ui.always-include=true` in the application.properties file of the Quarkus project.
+ 
+
+
+==== Prerequisites
+* Existing folder you want to create the file. (If the folder doesn't exist you can create it from with the editor).
+* Any Editor that can edit files
+
+==== Creating application.properties in any Editor
+
+Create application.properties in any Editor and insert the following data into it. .
+
+Opening a new file can be done by going to the file context menu in the top left corner of the editor and select *New* or *New File* or mostly also the keyboard shortcut ctrl+n will also work.
+The editor opens a new editor window for an untitled file that can be edited now.
+ 
+Copy the following text.
+[source, ]
+----
+quarkus.swagger-ui.always-include=true
+---- 
+Now insert the copied text into the new file.
+
+The next step is to save the file by selecting *Save* or *Save as* in the file context menu or by using the keyboard shortcut ctrl+s.
+A file explorer window opens.
+You should check if you are currently in the right directory where you want to save *devonfw/workspaces/main/quarkus-quickstarts/rest-json-quickstart/src/main/resources/application.properties*. 
+Select the directory `devonfw/workspaces/main/quarkus-quickstarts/rest-json-quickstart/src/main/resources`. If the directory does not exist, create the missing folders or run through the previous steps from the wiki again.
+To save the file specify the name of the file. Paste `application.properties` in the text field *File name:*. 
+The last step is to save the file with the *Save* button in the bottom right corner and application.properties has been created and filled with some data.
+
+

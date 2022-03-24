@@ -1,14 +1,14 @@
 = Angular Data Mocking and Service: A way to test the untestables
 
-In this scenario, you will learn how to write a simple mock service that helps us by feeding data into our components. 
 
+
+In this scenario, you will learn how to write a simple mock service that helps us by feeding data into our components. 
 
 ## Prerequisites
 
 * GitHub account
 
 * Basic Angular knowledge
-
 
 ## Learning goals
 
@@ -23,11 +23,8 @@ The definition of each step of this tutorial can be found at https://github.com/
 Feel free to report any errors to us or fix them yourself. Errors can be reported by creating an issue in the https://github.com/devonfw-tutorials/tutorials/issues[tutorials repository]. To fix the error fork the repository and create a pull request. Errors in the wiki can be reported and fixed in the https://github.com/devonfw-tutorials/tutorial-compiler[Tutorial-compiler repository].
 You can find a description of what to look for when creating a pull request at the devonfw contribution guide: https://devonfw.com/website/pages/community/community.html#community.asciidoc_contributing-to-devonfw. If you want to create a tutorial you can start with the https://katacoda.com/devonfw/scenarios/create-your-own-tutorial[katacoda tutorial] and read the description for creating your own tutorials: https://github.com/devonfw-tutorials/tutorials/wiki/Development.
 
-
-
-=== devonfw setup
-
-
+== devonfw setup
+ 
 
 If you already installed the devonfw IDE, you can skip this step.
 
@@ -107,11 +104,9 @@ image::images/detail.png[]
 
 
 
-
-
-=== Clone Repository
+== Clone Repository
 First, we have to clone the Devon4ng repository to access Angular Mock Service Sample.
-
+ 
 
 ==== Prerequisites
 * You need to have Git installed. You can download Git https://git-scm.com/downloads[here] for your OS and install it by following the instructions.
@@ -121,9 +116,9 @@ Open a terminal in your current workspace.
 
 Firstly, you have to move to the directory where the repository should be cloned to.
 If the directory does not exist yet, you can create it by using the `mkdir` command in the terminal.
-In this case execute `mkdir -p C:\devonfw\workspaces\main\tutorial-compiler\build\working\devonfw\workspaces\main`.
+In this case execute `mkdir -p /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main`.
 
-After that, move to the target directory by executing `cd  C:\devonfw\workspaces\main\tutorial-compiler\build\working\devonfw\workspaces\main` in the terminal.
+After that, move to the target directory by executing `cd  /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main` in the terminal.
 
 To clone a Git repository execute `git clone https://github.com/devonfw/devon4ng.git` in the terminal.
 
@@ -162,9 +157,6 @@ image::images/architecture.png[]
 
 
 
-== Conclusion
-
-
 
 ## Conclusion
 To conclude, in this tutorial you learned 
@@ -172,4 +164,5 @@ To conclude, in this tutorial you learned
 * the concepts of mock data and services
 
 * the mock architecture with the help of sample app
+
 

@@ -1,12 +1,12 @@
 = Boost Angular’s Performance by Lazy Loading your Modules with devon4ng
-== Learn how to defer initialization of modules in Angular until it is needed 
-In single-page-applications as the application size increases its loading speed decreases (since typically the entire application is loaded at once). Lazy loading is a design pattern that defers initialization of objects until it is needed. Angular handles lazy loading through the routing module which redirects to requested pages. Those pages can be loaded at start or on demand. In this tutorial you will build a simple app to understand how lazyloading is implemented in Angular.
 
+== Learn how to defer initialization of modules in Angular until it is needed 
+
+In single-page-applications as the application size increases its loading speed decreases (since typically the entire application is loaded at once). Lazy loading is a design pattern that defers initialization of objects until it is needed. Angular handles lazy loading through the routing module which redirects to requested pages. Those pages can be loaded at start or on demand. In this tutorial you will build a simple app to understand how lazyloading is implemented in Angular.
 
 ## Prerequisites
 
 * Basic Angular knowledge
-
 
 ## Learning goals
 In this tutorial you will learn how to:
@@ -24,11 +24,8 @@ The definition of each step of this tutorial can be found at https://github.com/
 Feel free to report any errors to us or fix them yourself. Errors can be reported by creating an issue in the https://github.com/devonfw-tutorials/tutorials/issues[tutorials repository]. To fix the error fork the repository and create a pull request. Errors in the wiki can be reported and fixed in the https://github.com/devonfw-tutorials/tutorial-compiler[Tutorial-compiler repository].
 You can find a description of what to look for when creating a pull request at the devonfw contribution guide: https://devonfw.com/website/pages/community/community.html#community.asciidoc_contributing-to-devonfw. If you want to create a tutorial you can start with the https://katacoda.com/devonfw/scenarios/create-your-own-tutorial[katacoda tutorial] and read the description for creating your own tutorials: https://github.com/devonfw-tutorials/tutorials/wiki/Development.
 
-
-
-=== devonfw setup
-
-
+== devonfw setup
+ 
 
 If you already installed the devonfw IDE, you can skip this step.
 
@@ -69,13 +66,11 @@ You can also just execute `.\setup` (Windows) or `bash setup` (Linux) and press 
 
 
 
-== Enable routing with router-outlet
+== Enable routing with router-outlet 
+=== Changing of the app.component.html file
 In the file app.component.html delete all the content and put in the `router-outlet` tag.
+  
 
-
-=== Changing of the app.component.html File
-
-In the file app.component.html delete all the content and put in the `router-outlet` tag.
 
 
 ==== Prerequisites
@@ -99,8 +94,10 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
-== Create the modules and their components
+== Create the modules and their components 
+=== Create the first-routing.module.ts file
 Next you will create the feature modules and components for the app. You will follow the structure shown in the image in the first step. You can use the CLI command `devon ng generate module` along with the `--routing` flag to generate the modules, and `devon ng generate component` command to generate the components.
+  
 
 
 ==== Prerequisites
@@ -139,9 +136,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file first.module.ts
+=== Create the first.module.ts file
 
 
 
@@ -185,9 +180,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file second-left-routing.module.ts
+=== Create the second-left-routing.module.ts file
 
 
 
@@ -227,9 +220,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file second-left.module.ts
+=== Create the second-left.module.ts file
 
 
 
@@ -274,9 +265,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file second-right-routing.module.ts
+=== Create the second-right-routing.module.ts file
 
 
 
@@ -316,9 +305,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file second-right.module.ts
+=== Create the second-right.module.ts file
 
 
 
@@ -363,9 +350,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file first.component.html
+=== Create the first.component.html file
 
 
 
@@ -408,9 +393,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file first.component.scss
+=== Create the first.component.scss file
 
 
 
@@ -440,9 +423,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file first.component.ts
+=== Create the first.component.ts file
 
 
 
@@ -487,9 +468,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file content.component.html
+=== Create the content.component.html file
 
 
 
@@ -531,9 +510,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file content.component.scss
+=== Create the content.component.scss file
 
 
 
@@ -563,9 +540,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file content.component.ts
+=== Create the content.component.ts file
 
 
 
@@ -610,9 +585,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file content.component.html
+=== Create the content.component.html file
 
 
 
@@ -653,9 +626,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file content.component.scss
+=== Create the content.component.scss file
 
 
 
@@ -685,9 +656,7 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-
-
-=== Create the file content.component.ts
+=== Create the content.component.ts file
 
 
 
@@ -732,19 +701,14 @@ The last step is to save the file with the *Save* button in the bottom right cor
 
 
 
-== Configure routing
+== Configure routing 
+=== Changing of the app-routing.module.ts file
 To move between the components you will now configure the routes. You can refer the image in the first step to understand how you will configure the routes.
 In `app-routing.module.ts` you will add a path 'first' to `FirstComponent` and a redirection from '' to 'first'. And then import the `FirstModule` in the main `app.module.ts`
 
 Next, for the feature modules, you will add the routes 'first/second-left' and 'first/second-right' pointing to their respective `ContentComponent` in `first-routing.module.ts`. And then import `SecondLeftModule` and `SecondRightModule` in `first.module.ts`
+  
 
-
-=== Changing of the app-routing.module.ts File
-
-To move between the components you will now configure the routes. You can refer the image in the first step to understand how you will configure the routes.
-In `app-routing.module.ts` you will add a path 'first' to `FirstComponent` and a redirection from '' to 'first'. And then import the `FirstModule` in the main `app.module.ts`
-
-Next, for the feature modules, you will add the routes 'first/second-left' and 'first/second-right' pointing to their respective `ContentComponent` in `first-routing.module.ts`. And then import `SecondLeftModule` and `SecondRightModule` in `first.module.ts`
 
 
 ==== Prerequisites
@@ -789,6 +753,9 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
+=== Changing of the app.module.ts file
+
+
 
 
 ==== Prerequisites
@@ -830,6 +797,9 @@ export class AppModule { }
 Now insert the copied text into the opened app.module.ts. 
 The final step is to save the file by selecting *Save* in the file context menu or by using the keyboard shortcut ctrl+s and app.module.ts has been changed.
 
+
+
+=== Changing of the first-routing.module.ts file
 
 
 
@@ -881,6 +851,9 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
+=== Changing of the first.module.ts file
+
+
 
 
 ==== Prerequisites
@@ -923,7 +896,8 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
-== Eager loading vs Lazy Loading
+== Eager loading vs Lazy Loading 
+=== Changing of the app-routing.module.ts file
 If you run the project at this point you can see in the terminal that just the main file is built.
 ![compile-eager](./assets/compile-eager.png)
 
@@ -933,19 +907,8 @@ Go to port 4200 and check the Network tab in the Developer Tools. We can see a d
 Now we will modify the app to lazily load the modules. Modifying an angular application to load its modules lazily is easy, you have to change the routing configuration of the desired module (for example `FirstModule`). Instead of loading a component, you dynamically import it in a `loadChildren` attribute because modules acts as gates to access components "inside" them. Updating this app to load lazily has four consecuences: no component attribute, no import of `FirstComponent`, `FirstModule` import has to be removed from the imports array at `app.module.ts`, and change of context.
 
 Also, in `first-routing.module.ts` you can change the path for the `ContentComponent`s from `first/second-left` and `first/second-right` to simply `second-left` and `second-right` respectively,  because it aquires the context set by AppRoutingModule.
+  
 
-
-=== Changing of the app-routing.module.ts File
-
-If you run the project at this point you can see in the terminal that just the main file is built.
-![compile-eager](./assets/compile-eager.png)
-
-Go to port 4200 and check the Network tab in the Developer Tools. We can see a document named "first" is loaded. If you click on [Go to right module] a second level module opens, but there is no 'second-right' document.
-![second-lvl-right-eager](./assets/second-lvl-right-eager.png)
-
-Now we will modify the app to lazily load the modules. Modifying an angular application to load its modules lazily is easy, you have to change the routing configuration of the desired module (for example `FirstModule`). Instead of loading a component, you dynamically import it in a `loadChildren` attribute because modules acts as gates to access components "inside" them. Updating this app to load lazily has four consecuences: no component attribute, no import of `FirstComponent`, `FirstModule` import has to be removed from the imports array at `app.module.ts`, and change of context.
-
-Also, in `first-routing.module.ts` you can change the path for the `ContentComponent`s from `first/second-left` and `first/second-right` to simply `second-left` and `second-right` respectively,  because it aquires the context set by AppRoutingModule.
 
 
 ==== Prerequisites
@@ -989,6 +952,9 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
+=== Changing of the app.module.ts file
+
+
 
 
 ==== Prerequisites
@@ -1028,6 +994,9 @@ export class AppModule { }
 Now insert the copied text into the opened app.module.ts. 
 The final step is to save the file by selecting *Save* in the file context menu or by using the keyboard shortcut ctrl+s and app.module.ts has been changed.
 
+
+
+=== Changing of the first-routing.module.ts file
 
 
 
@@ -1079,21 +1048,15 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
-== Lazily load the second left module
+== Lazily load the second left module 
+=== Changing of the first-routing.module.ts file
 Now when you check the terminal running the app, you could see the lazy loaded modules getting generated along with the main bundle. Also, if you check the Network tab in the developer tools, you could see the (lazy) modules getting loaded when needed. Since, `FirstModule` is the first path we visit, it is getting loaded at first only.
 ![compile-first-lazy](./assets/compile-first-lazy.png)
 ![first-lvl-lazy](./assets/first-lvl-lazy.png)
 
 Now, lets make the SecondLeftModule load lazily. For this, you need to change `component` to `loadChildren` and refer `SecondLeftModule` in the file `first-routing.module.ts`. Next, you need to remove `SecondLeftModule` from the `imports` array of `first.module.ts`. After that you need to route the `ContentComponent` within the `second-left-routing.module.ts`.
+  
 
-
-=== Changing of the first-routing.module.ts File
-
-Now when you check the terminal running the app, you could see the lazy loaded modules getting generated along with the main bundle. Also, if you check the Network tab in the developer tools, you could see the (lazy) modules getting loaded when needed. Since, `FirstModule` is the first path we visit, it is getting loaded at first only.
-![compile-first-lazy](./assets/compile-first-lazy.png)
-![first-lvl-lazy](./assets/first-lvl-lazy.png)
-
-Now, lets make the SecondLeftModule load lazily. For this, you need to change `component` to `loadChildren` and refer `SecondLeftModule` in the file `first-routing.module.ts`. Next, you need to remove `SecondLeftModule` from the `imports` array of `first.module.ts`. After that you need to route the `ContentComponent` within the `second-left-routing.module.ts`.
 
 
 ==== Prerequisites
@@ -1143,6 +1106,9 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
+=== Changing of the first.module.ts file
+
+
 
 
 ==== Prerequisites
@@ -1181,6 +1147,9 @@ export class FirstModule { }
 Now insert the copied text into the opened first.module.ts. 
 The final step is to save the file by selecting *Save* in the file context menu or by using the keyboard shortcut ctrl+s and first.module.ts has been changed.
 
+
+
+=== Changing of the second-left-routing.module.ts file
 
 
 
@@ -1227,7 +1196,6 @@ Also, in the Network tab of the developer tools, you could see the `second-left-
 ![second-lvl-left-lazy](./assets/second-lvl-left-lazy.png)
 
 
-== Conclusion
-
 
 Lazy loading is a pattern useful when new features are added, these features are usually identified as modules which can be loaded only if needed as shown in this tutorial, reducing the time spent loading an application.
+

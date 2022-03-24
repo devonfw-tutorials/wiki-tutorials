@@ -1,10 +1,10 @@
 = devon4j architecture in practice
 
 
+
 ## Prerequisites
 
 Java programming knowledge
-
 
 ## Learning goals
 
@@ -29,14 +29,11 @@ The definition of each step of this tutorial can be found at https://github.com/
 Feel free to report any errors to us or fix them yourself. Errors can be reported by creating an issue in the https://github.com/devonfw-tutorials/tutorials/issues[tutorials repository]. To fix the error fork the repository and create a pull request. Errors in the wiki can be reported and fixed in the https://github.com/devonfw-tutorials/tutorial-compiler[Tutorial-compiler repository].
 You can find a description of what to look for when creating a pull request at the devonfw contribution guide: https://devonfw.com/website/pages/community/community.html#community.asciidoc_contributing-to-devonfw. If you want to create a tutorial you can start with the https://katacoda.com/devonfw/scenarios/create-your-own-tutorial[katacoda tutorial] and read the description for creating your own tutorials: https://github.com/devonfw-tutorials/tutorials/wiki/Development.
 
-
-
-=== devonfw setup
-
+== devonfw setup
 ### setup environment
 We will start by setting up development environment.
 
-
+ 
 
 If you already installed the devonfw IDE, you can skip this step.
 
@@ -77,13 +74,11 @@ You can also just execute `.\setup` (Windows) or `bash setup` (Linux) and press 
 
 
 
-
-
-=== Clone Repository
+== Clone Repository
 ### Clone jump the queue repository
 
 First, clone the Jump-The-Queue Repository.Jump the queue is a sample devonfw application.
-
+ 
 
 ==== Prerequisites
 * You need to have Git installed. You can download Git https://git-scm.com/downloads[here] for your OS and install it by following the instructions.
@@ -93,9 +88,9 @@ Open a terminal in your current workspace.
 
 Firstly, you have to move to the directory where the repository should be cloned to.
 If the directory does not exist yet, you can create it by using the `mkdir` command in the terminal.
-In this case execute `mkdir -p C:\devonfw\workspaces\main\tutorial-compiler\build\working\devonfw\workspaces\main`.
+In this case execute `mkdir -p /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main`.
 
-After that, move to the target directory by executing `cd  C:\devonfw\workspaces\main\tutorial-compiler\build\working\devonfw\workspaces\main` in the terminal.
+After that, move to the target directory by executing `cd  /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main` in the terminal.
 
 To clone a Git repository execute `git clone https://github.com/devonfw/jump-the-queue.git` in the terminal.
 
@@ -186,12 +181,9 @@ Detailed description about devon4j business and technical architecture can be fo
 
 
 
-== Conclusion
 
 
-
-#
-## Conclusion
+### Conclusion
 
 To summarize, in this tutorial we learned about devon4j architecture and key principle it follows. with help of example we also learned about devon4j different modules such as api, core ,server and its multilayered architecture.
 

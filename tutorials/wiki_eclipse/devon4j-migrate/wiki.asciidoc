@@ -1,13 +1,13 @@
 = Migrate a devon4j project to the latest version
 
-This tutorial mainly focuses on migrating an older version of devon4j project to the latest version using devon4j migrate command.
 
+
+This tutorial mainly focuses on migrating an older version of devon4j project to the latest version using devon4j migrate command.
 
 
 ## Prerequisites
 
 * devonfw IDE
-
 
 ## Learning goals.
 Here in this tutorial you will learn 
@@ -21,11 +21,8 @@ The definition of each step of this tutorial can be found at https://github.com/
 Feel free to report any errors to us or fix them yourself. Errors can be reported by creating an issue in the https://github.com/devonfw-tutorials/tutorials/issues[tutorials repository]. To fix the error fork the repository and create a pull request. Errors in the wiki can be reported and fixed in the https://github.com/devonfw-tutorials/tutorial-compiler[Tutorial-compiler repository].
 You can find a description of what to look for when creating a pull request at the devonfw contribution guide: https://devonfw.com/website/pages/community/community.html#community.asciidoc_contributing-to-devonfw. If you want to create a tutorial you can start with the https://katacoda.com/devonfw/scenarios/create-your-own-tutorial[katacoda tutorial] and read the description for creating your own tutorials: https://github.com/devonfw-tutorials/tutorials/wiki/Development.
 
-
-
-=== devonfw setup
-
-
+== devonfw setup
+ 
 
 If you already installed the devonfw IDE, you can skip this step.
 
@@ -66,12 +63,10 @@ You can also just execute `.\setup` (Windows) or `bash setup` (Linux) and press 
 
 
 
-== Conclusion
-
-
 
 ## Conclusion
 You have successfully migrated the sample project from an older version to the latest version using command line!!
 
 For more details on devon4j java commands for various functionalities and the arguments (devon java «args») follow 
 https://devonfw.com/website/pages/docs/devonfw-ide-usage.asciidoc.html#java.asciidoc
+
