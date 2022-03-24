@@ -55,15 +55,15 @@ jobs:
           cd compiler
           npm install
           
-      - name: npm install repo
-        run: |
-          cd compiler/repo
-          npm install
-          
       - name: Checkout
         uses: actions/checkout@v2
         with:
           path: compiler/repo
+          
+      - name: npm install repo
+        run: |
+          cd compiler/repo
+          npm install
           
       - name: create tutorials and courses
         run: node repo/publishTutorials.js $GITHUB_WORKSPACE
