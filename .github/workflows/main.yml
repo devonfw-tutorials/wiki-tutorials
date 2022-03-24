@@ -66,9 +66,11 @@ jobs:
           npm install
           
       - name: create tutorials and courses
+        working-directory: ./compiler
         run: node repo/publishTutorials.js $GITHUB_WORKSPACE
 
       - name: publish tutorials and courses
+        working-directory: ./compiler
         run: bash repo/publish.sh 
 
       - name: Repository dispatch
