@@ -1,12 +1,12 @@
 = Create your own tutorial
 
-In this scenario, you will learn how to create your own tutorial using the tutorial compiler.
 
+
+In this scenario, you will learn how to create your own tutorial using the tutorial compiler.
 
 ## Prerequisites
 
 * GitHub account
-
 
 ## Learning goals
 
@@ -50,10 +50,12 @@ image::images/clone_code.jpg[]
 
 
 
-== Clone the repository
+== Clone the repository 
+=== Clone Repository
 Paste the URL to the 'git clone' command to clone the repostitory. For this tutorial we will use the original tutorials repository of the 'devonfw-tutorials' GitHub account to show the workflow of creating the tutorial.
 
 When you run the command on your machine, you will of course need to customize the URL and add your personal GitHub name. So the command will be `git clone https://github.com/YourName/tutorials.git`.
+  
 
 
 ==== Prerequisites
@@ -64,9 +66,9 @@ Open a terminal in your current workspace.
 
 Firstly, you have to move to the directory where the repository should be cloned to.
 If the directory does not exist yet, you can create it by using the `mkdir` command in the terminal.
-In this case execute `mkdir -p C:\devonfw\workspaces\main\tutorial-compiler\build\working\`.
+In this case execute `mkdir -p /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/`.
 
-After that, move to the target directory by executing `cd  C:\devonfw\workspaces\main\tutorial-compiler\build\working\` in the terminal.
+After that, move to the target directory by executing `cd  /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/` in the terminal.
 
 To clone a Git repository execute `git clone https://github.com/devonfw-tutorials/tutorials.git` in the terminal.
 
@@ -95,15 +97,13 @@ Create a new branch for your tutorial and switch into this branch.
 Now you can start to create the tutorial. This will be shown in the next steps.
 
 
-
-
-=== Create the file index.asciidoc
-
+== Create the index.asciidoc file
 # Create the tutorial
 
 Each tutorial is located in its own directory and consists of an asciidoc file, in which the tutorial is specified. The file is always named 'index.asciidoc'.
 
 So create a new folder in inside the tutorials directory and the file for the tutorial.
+ 
 
 
 ==== Prerequisites
@@ -174,10 +174,12 @@ Let&#39;s fix that and fill the tutorial.
 
 
 
-== Add the title
+== Add the title 
+=== Changing of the index.asciidoc file
 The syntax in which the tutorial is written can be found at https://github.com/devonfw-tutorials/tutorials/wiki/Development.
 
 At first we will add a title to the first line of the file.
+  
 
 
 ==== Prerequisites
@@ -203,8 +205,10 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
-== Add the description
+== Add the description 
+=== Changing of the index.asciidoc file
 The next step is to add some description lines below the title. The description has to be surrounded by `====`.
+  
 
 
 ==== Prerequisites
@@ -237,7 +241,8 @@ The final step is to save the file by selecting *Save* in the file context menu 
 
 
 
-== Add a step
+== Add a step 
+=== Changing of the index.asciidoc file
 Last but not least add a step. 
 
 Each step consists of
@@ -247,6 +252,7 @@ Each step consists of
 * and an optional explanation of the results of the step.
 
 In this tutorial we will add a simple step which creates a new file.
+  
 
 
 ==== Prerequisites

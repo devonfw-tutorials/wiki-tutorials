@@ -1,5 +1,7 @@
 = Generate your Java application with devon4j
 
+
+
 devon4j is the Java stack of devonfw. It allows you to build business applications (backends) using Java technology in a highly efficient and standardized way based on established best-practices.
 
 # Prerequisites
@@ -20,11 +22,8 @@ The definition of each step of this tutorial can be found at https://github.com/
 Feel free to report any errors to us or fix them yourself. Errors can be reported by creating an issue in the https://github.com/devonfw-tutorials/tutorials/issues[tutorials repository]. To fix the error fork the repository and create a pull request. Errors in the wiki can be reported and fixed in the https://github.com/devonfw-tutorials/tutorial-compiler[Tutorial-compiler repository].
 You can find a description of what to look for when creating a pull request at the devonfw contribution guide: https://devonfw.com/website/pages/community/community.html#community.asciidoc_contributing-to-devonfw. If you want to create a tutorial you can start with the https://katacoda.com/devonfw/scenarios/create-your-own-tutorial[katacoda tutorial] and read the description for creating your own tutorials: https://github.com/devonfw-tutorials/tutorials/wiki/Development.
 
-
-
-=== devonfw setup
-
-
+== devonfw setup
+ 
 
 If you already installed the devonfw IDE, you can skip this step.
 
@@ -67,9 +66,7 @@ The installer will also ask you if you want to enter secrets for your maven repo
 
 
 
-
-
-=== Create a new devon4j project from command prompt
+== Create a new devon4j project from command promt
 ### A devon4j Sample Application
 
 Note: Startup script will take some time for set up. After that you can proceed further.
@@ -83,6 +80,7 @@ If you want to create devon4j application on your local machine there are two wa
 Now, you will create sample devon4j application with name *sampleapp*. This step will guide you on how to do it.
 
 
+ 
 
 ==== Prerequisites
 
@@ -163,12 +161,10 @@ Each component is divided into following layers:
 * [data-access layer](https://github.com/devonfw/devon4j/blob/master/documentation/guide-dataaccess-layer.asciidoc) for the data access (esp. persistence).For example, in sampleapp we generated com.example.application.sampleapp.<componentname>.dataaccess will contain entity, repositories etc.
 
 
-
-
-=== Build the Java Project with Maven
+== Build the Java project with Maven
 Now you have to build a devon4j sample application i.e. sampleapp.
 
-
+ 
 
 ==== Prerequisites
 
@@ -176,7 +172,7 @@ Now you have to build a devon4j sample application i.e. sampleapp.
 
 ==== Execution
 
-Now move to your project directory manually or by executing `cd C:\devonfw\workspaces\main\tutorial-compiler\build\working\devonfw\workspaces\main\sampleapp` in the terminal.
+Now move to your project directory manually or by executing `cd /home/runner/work/wiki-tutorials/wiki-tutorials/compiler/build/working/devonfw/workspaces/main/sampleapp` in the terminal.
 Next, use the following command to build the java project.
 
 `mvn clean install -Dmaven.test.skip=true`
@@ -189,9 +185,6 @@ We do not need to execute the test cases, so we can skip them by using the optio
 
 Once build is successful you will get bootified-war generated in server module target folder. In sampleapp check for path sampleapp/server/sampleapp-server-bootified.war
 
-
-
-== Conclusion
 
 
 

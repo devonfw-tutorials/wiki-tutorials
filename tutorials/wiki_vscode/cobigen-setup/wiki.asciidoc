@@ -1,16 +1,16 @@
 = Setting up devonfw Code Generator(i.e. CobiGen)
 
+
+
 CobiGen is a generic incremental code generator. It allows you to generate application code based on the devonfw architecture including all software layers. 
 There is also a CobiGen Command Line Interface(CLI) where you can start the setup following the generation of code. 
 
 This tutorial mainly focuses on the setup of CobiGen along with various commands to execute the generations.
-
 ## Prerequisites
 
 * devonfw IDE
 
 * User should have development experience of any language.
-
 
 ## Learning goals.
 Here in this tutorial you will learn 
@@ -28,11 +28,8 @@ The definition of each step of this tutorial can be found at https://github.com/
 Feel free to report any errors to us or fix them yourself. Errors can be reported by creating an issue in the https://github.com/devonfw-tutorials/tutorials/issues[tutorials repository]. To fix the error fork the repository and create a pull request. Errors in the wiki can be reported and fixed in the https://github.com/devonfw-tutorials/tutorial-compiler[Tutorial-compiler repository].
 You can find a description of what to look for when creating a pull request at the devonfw contribution guide: https://devonfw.com/website/pages/community/community.html#community.asciidoc_contributing-to-devonfw. If you want to create a tutorial you can start with the https://katacoda.com/devonfw/scenarios/create-your-own-tutorial[katacoda tutorial] and read the description for creating your own tutorials: https://github.com/devonfw-tutorials/tutorials/wiki/Development.
 
-
-
-=== devonfw setup
-
-
+== devonfw setup
+ 
 
 If you already installed the devonfw IDE, you can skip this step.
 
@@ -47,13 +44,13 @@ Create a new directory in the location where you want to install the devonfw IDE
 
 
 
-Now you have to download version 2020.08.001 of the devonfw IDE. You can download it from https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=2020.08.001&p=tar.gz[here].
+Now you have to download the latest release of the devonfw IDE. You can download it from https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz[here].
 
-In the Terminal execute `Invoke-WebRequest -OutFile devonfw-ide-scripts.tar.gz 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=2020.08.001&p=tar.gz'` if you are using Windows.
+In the Terminal execute `Invoke-WebRequest -OutFile devonfw-ide-scripts.tar.gz 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz'` if you are using Windows.
 
-On Linux use `wget -c 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=2020.08.001&p=tar.gz' -O devonfw-ide-scripts.tar.gz -`.
+On Linux use `wget -c 'https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz' -O devonfw-ide-scripts.tar.gz -`.
 
-On MacOS, depending on your setup, you can either use the same `wget` command specified for the Linux installation (install wget via homebrew `brew install wget`) or use any other available download command i.e. `curl -o devonfw-ide-scripts.tar.gz https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=2020.08.001&p=tar.gz`.
+On MacOS, depending on your setup, you can either use the same `wget` command specified for the Linux installation (install wget via homebrew `brew install wget`) or use any other available download command i.e. `curl -o devonfw-ide-scripts.tar.gz https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz`.
 
 
 
