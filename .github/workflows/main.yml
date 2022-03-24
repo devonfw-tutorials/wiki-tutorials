@@ -57,7 +57,7 @@ jobs:
           
       - name: npm install repo
         run: |
-          cd repo
+          cd compiler/repo
           npm install
           
       - name: Checkout
