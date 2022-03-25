@@ -3,6 +3,10 @@ const path = require('path');
 const pegjs = require("pegjs");
 const child_process = require("child_process");
 const rimraf = require("rimraf");
+const re = require("rimraf");
+const lunr = require('lunr');
+
+let id = 0;
 
 function downloadFile(url, file) {
 	if (!fs.existsSync(path.dirname(file))){
@@ -19,41 +23,38 @@ function getDirectories(srcpath) {
 }
 
 function parseTutorials(tutorials, tutorialsFolder, tempFolder, types){
-	let tutorialList = [];
+	let docs = [];
 	let tutorialJson = {};
 	let def = fs.readFileSync(path.join(tempFolder, 'parser.def'), 'utf8');
     let parser = pegjs.generate(def);
 	for (let tutorial of tutorials){
 		let tempTutorial = fs.readFileSync(path.join(tempFolder, `${tutorial}.asciidoc`), 'utf8');
 		let parseResult = parser.parse(tempTutorial);
-		let tutorialSnippet = {}
 		for (let type of types){
-			tutorialSnippet[type] = fs.readFileSync(path.join(tutorialsFolder, type, tutorial, 'index.asciidoc'), 'utf8');
-		}
-		let title = parseResult[0][2]
-		let subtitle = parseResult[1]? parseResult[1][3]: "";
-		let description = parseResult[3][2].descriptionlines;
-		let paths = tutorialPaths(tutorial);
+			let title = parseResult[0][2]
+			let paths = tutorialPaths(tutorial);
+			let tutorialSnippet = fs.readFileSync(path.join(tutorialsFolder, type, tutorial, 'index.asciidoc'), 'utf8');
+			tutorialSnippet = tutorialSnippet.replace(/\n/g, " ")
+			let doc = {
+				dirname: tutorial,
+				id: id++,
+				path: paths[type],
+				type: 'tutorial',
+				title: title,
+				body: tutorialSnippet,
+			};
+			
+			docs.push(doc);
+		};
 		
-		
-		tutorialJson = {
-			name: tutorial,
-			title: title,
-			subtitle: subtitle,
-			description: description,
-			paths: paths,
-			snippets: tutorialSnippet
-		}
-		tutorialList.push(tutorialJson);
 	}
-	return tutorialList;
+	return docs;
 }
 
 function tutorialPaths(tutorial){
 	paths = {}
-	paths["eclipse"] = `https://devonfw.com/website/pages/learning/tutorials/wiki_eclipse/${tutorial}/`;
-	paths["vscode"] = `https://devonfw.com/website/pages/learning/tutorials/wiki_vscode/${tutorial}/`;
-	paths["katacoda"] = `https://katacoda.com/devonfw/scenarios/${tutorial}/`;
+	paths["wiki_eclipse"] = `website/pages/learning/tutorials/wiki_eclipse/${tutorial}/`;
+	paths["wiki_vscode"] = `website/pages/learning/tutorials/wiki_vscode/${tutorial}/`;
 	return paths;
 	
 }
@@ -68,34 +69,42 @@ function downloadTutorials(tempFolder, tutorials){
 	downloadFile("https://raw.githubusercontent.com/devonfw-tutorials/tutorial-compiler/main/engine/parser.def", path.join(tempFolder, 'parser.def'));
 }
 
-function createTutorialFile(output, tutorials){
-	let content = JSON.stringify(tutorials, null, 4)
-	fs.writeFile(output, content, 'utf8', function (err) {
-		if (err) {
-			console.log("An error occured while writing JSON Object to File.");
-			return console.log(err);
-		}
-	 
-		console.log("Tutorials file has been saved.");
-	});
+function createTutorialFile(outputDocs, outputIndex, docs){
+	let idx = lunr(function () {
+        this.ref('id');
+        this.field('title');
+        this.field('body');
+        this.metadataWhitelist = ['position'];
+
+        docs.forEach(function (doc) {
+            this.add(doc);
+        }, this);
+    });
+
+    let idxJson = JSON.stringify(idx, null, 4);
+
+    fs.writeFileSync(outputDocs, JSON.stringify(docs, null, 4));
+    fs.writeFileSync(outputIndex, idxJson);
+    console.log('Docs and Index were saved!');
 } 
+
 
 function cleanUp(tempFolder){
 	rimraf.sync(tempFolder);
 }
 
 function main() {
-	
 	let tutorialsFolder = path.join(__dirname, '..', 'tutorials');
 	let tempFolder = path.join(__dirname, 'temp');
 	let typeFolder = getDirectories(tutorialsFolder);
-	let output = path.join('.', process.argv[2]);
+	let outputDocs = path.join('.', process.argv[2]);
+	let outputIndex = path.join('.', process.argv[3]);
 	let types = typeFolder.map( type => {return path.basename(type)});
 	let tutorials = getDirectories(typeFolder[0]).map( type => {return path.basename(type)});
 	
 	downloadTutorials(tempFolder, tutorials);
-	tutorialList = parseTutorials(tutorials, tutorialsFolder, tempFolder, types);
-	createTutorialFile(output, tutorialList);
+	docs = parseTutorials(tutorials, tutorialsFolder, tempFolder, types);
+	createTutorialFile(outputDocs, outputIndex, docs);
 	cleanUp(tempFolder);
 
 }
