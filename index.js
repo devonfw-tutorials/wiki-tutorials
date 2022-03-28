@@ -8,11 +8,11 @@ function renderTutorial(tutorial){
 	desc = desc.replace(/(\[|\])/g,'').replace(/\(.*?\)/, '');
 	var description = $('<div class="card_description">' + desc + '</div>');
 	var paths = $(
-	`<div class = "card-paths">
-
-		<a href="${tutorial['paths']['eclipse']}"><img src="./wiki-images/eclipse.png" class="card-img zoom"></img></a>
-		<a href="${tutorial['paths']['vscode']}"><img src="./wiki-images/vscode.png" class="card-img zoom"></img></a>
-		<a href="${tutorial['paths']['katacoda']}"><img src="./wiki-images/katacoda.png" class="card-img zoom"></img></a>
+	`
+	<div class = "card-paths">
+		<a href="${tutorial['paths']['eclipse']}"><img src="./wiki-images/eclipse.png" class="card-img zoom" title="Click here to read the Eclipse tutorial"></img></a>
+		<a href="${tutorial['paths']['vscode']}"><img src="./wiki-images/vscode.png" class="card-img zoom" title="Click here to read the VSCode tutorial"></img></a>
+		<a href="${tutorial['paths']['katacoda']}"><img src="./wiki-images/katacoda.png" class="card-img zoom" title="Click here to try the interactive Tutorial on Katacoda"></img></a>
 	</div>`
 	)
 	$("#tutorials").append(tutorialCard);
