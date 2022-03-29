@@ -1,18 +1,18 @@
 let onlineTutorials = []
 
 function renderTutorial(tutorial){
-	var tutorialCard = $('<div id="tutorial_' + tutorial['name'] + '" class="card col-12 col-md-5"></div>');
+	var tutorialCard = $('<div id="tutorial_' + tutorial['name'] + '" class="card col-12 col-sm-5"></div>');
 	var descDiv = $('<div class="card_desc"></div>')
 	var title = $('<div class="title">' + tutorial['title'] + '</div>');
 	var desc  = tutorial['description'].split('#')[0].split('For more information')[0].split('More information')[0]
 	desc = desc.replace(/(\[|\])/g,'').replace(/\(.*?\)/, '');
 	var description = $('<div class="card_description">' + desc + '</div>');
 	var paths = $(
-	`<div class = "card-paths">
-
-		<a href="${tutorial['paths']['eclipse']}"><img src="./wiki-images/eclipse.png" class="card-img zoom"></img></a>
-		<a href="${tutorial['paths']['vscode']}"><img src="./wiki-images/vscode.png" class="card-img zoom"></img></a>
-		<a href="${tutorial['paths']['katacoda']}"><img src="./wiki-images/katacoda.png" class="card-img zoom"></img></a>
+	`
+	<div class = "card-paths">
+		<a href="${tutorial['paths']['eclipse']}"><img src="./wiki-images/eclipse.png" class="card-img zoom" title="Click here to read the Eclipse tutorial"></img></a>
+		<a href="${tutorial['paths']['vscode']}"><img src="./wiki-images/vscode.png" class="card-img zoom" title="Click here to read the VSCode tutorial"></img></a>
+		<a href="${tutorial['paths']['katacoda']}"><img src="./wiki-images/katacoda.png" class="card-img zoom" title="Click here to try the interactive Tutorial on Katacoda"></img></a>
 	</div>`
 	)
 	$("#tutorials").append(tutorialCard);
@@ -115,7 +115,7 @@ function searchOnPress(){
 function search(){
 	const queryString = window.location.search
 	const urlParams = new URLSearchParams(queryString)
-	const words = urlParams.get('search')
+	const words = urlParams.get('search') ? urlParams.get('search') : []; 
 	const checkedBoxes = document.querySelectorAll('input[name=filter-item]:checked')
 	let queryRes = words ? searchData.index.search(words) : [];
 	let selectedTutorials = []
@@ -128,7 +128,7 @@ function search(){
 		let obj = findById(res.ref, searchData.documents);
 		selectedTutorials.push(obj.dirname);
 	}
-	if( words.length > 0) {
+	if(words.length > 0) {
 		filterTutorials(selectedTutorials);
 		onlineTutorials = selectedTutorials;
 	}else{
@@ -163,7 +163,7 @@ async function main() {
 	var container = $('<div id="tutorial_container" class="tutorial_container col-12 row"></div>');
     var tutorialsDiv = $('<div id="tutorials" class="tutorials col-12 col-md-9 row"></div>');
 	var filterPanelDiv = $('<div id="filter" class="filter col-12 col-md-3 "></div>');
-	var seachFieldDiv = '<div class="search-bar col-12"><input onkeyup="searchOnPress()" id="search-field-tutorial" type="search" class="form-control mr-sm-2" placeholder="Search by keyword(s)..." aria-label="Search" style="height: auto;"/>';
+	var seachFieldDiv = '<div class="search-div col-12"><input onkeyup="searchOnPress()" id="search-field-tutorial" type="search" class="form-control search-bar mr-sm-2" placeholder="Search by keyword(s)..." aria-label="Search" style="height: auto;"/>';
 	$("head").append('<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">');
 	$("#content").append(seachFieldDiv, container)
 	container.append(filterPanelDiv, tutorialsDiv);
