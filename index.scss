@@ -17,8 +17,8 @@
 }
 
 .tutorials{
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 0;
+	margin-right: 0;
 	margin-bottom: auto;
 }
 
@@ -38,10 +38,9 @@
 .card {
 	
 	height: auto;
-	padding: 0;
+	padding: 0 0.5rem 0.5rem 0.5rem;
 	border: None;
 	justify-content: space-between;
-	margin: 0.2rem;
 }
 
 .card_desc{
