@@ -19,6 +19,7 @@
 .tutorials{
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: auto;
 }
 
 .title{
@@ -38,7 +39,6 @@
 	
 	height: auto;
 	padding: 0;
-
 	border: None;
 	justify-content: space-between;
 	margin: 0.2rem;
@@ -58,8 +58,6 @@
 .card-paths{
 
 	height: auto;
-	display:flex;
-	flex-direction: row;
 }
 
 .card-img{
