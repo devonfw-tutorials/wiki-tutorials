@@ -115,7 +115,7 @@ function searchOnPress(){
 function search(){
 	const queryString = window.location.search
 	const urlParams = new URLSearchParams(queryString)
-	const words = urlParams.get('search')
+	const words = urlParams.get('search') ? urlParams.get('search') : []; 
 	const checkedBoxes = document.querySelectorAll('input[name=filter-item]:checked')
 	let queryRes = words ? searchData.index.search(words) : [];
 	let selectedTutorials = []
@@ -128,7 +128,7 @@ function search(){
 		let obj = findById(res.ref, searchData.documents);
 		selectedTutorials.push(obj.dirname);
 	}
-	if( words.length > 0) {
+	if(words.length > 0) {
 		filterTutorials(selectedTutorials);
 		onlineTutorials = selectedTutorials;
 	}else{
