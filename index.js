@@ -1,7 +1,7 @@
 let onlineTutorials = []
 
 function renderTutorial(tutorial){
-	var tutorialCard = $('<div id="tutorial_' + tutorial['name'] + '" class="card col-12 col-md-5"></div>');
+	var tutorialCard = $('<div id="tutorial_' + tutorial['name'] + '" class="card col-12 col-sm-5"></div>');
 	var descDiv = $('<div class="card_desc"></div>')
 	var title = $('<div class="title">' + tutorial['title'] + '</div>');
 	var desc  = tutorial['description'].split('#')[0].split('For more information')[0].split('More information')[0]
@@ -163,7 +163,7 @@ async function main() {
 	var container = $('<div id="tutorial_container" class="tutorial_container col-12 row"></div>');
     var tutorialsDiv = $('<div id="tutorials" class="tutorials col-12 col-md-9 row"></div>');
 	var filterPanelDiv = $('<div id="filter" class="filter col-12 col-md-3 "></div>');
-	var seachFieldDiv = '<div class="search-bar col-12"><input onkeyup="searchOnPress()" id="search-field-tutorial" type="search" class="form-control mr-sm-2" placeholder="Search by keyword(s)..." aria-label="Search" style="height: auto;"/>';
+	var seachFieldDiv = '<div class="search-div col-12"><input onkeyup="searchOnPress()" id="search-field-tutorial" type="search" class="form-control search-bar mr-sm-2" placeholder="Search by keyword(s)..." aria-label="Search" style="height: auto;"/>';
 	$("head").append('<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">');
 	$("#content").append(seachFieldDiv, container)
 	container.append(filterPanelDiv, tutorialsDiv);

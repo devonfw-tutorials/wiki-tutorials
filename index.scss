@@ -1,11 +1,12 @@
 #content {
+	margin-left: 1vw;
 }
 
 .tutorial_container{
   display: flex;
   margin: 0; 
-  padding: 0;
-  flex-direction: columns;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .filter{
@@ -35,7 +36,6 @@
 
 .card {
 	
-	width: 100%;
 	height: auto;
 	padding: 0;
 
@@ -94,7 +94,6 @@
 	border-style: None;
 	color: #000;
 	font-size: 1rem;
-	width: auto;
 }
 
 .filter_title{
@@ -107,11 +106,13 @@
 	width: 100vw;
 }
 
-.search-bar{
-	margin-left: 0;
-	margin-bottom: 1rem;
-	width: 90vw;
-	padding: 0;
+.search-div{
+	margin: 0 2rem 1rem 2rem;
+	padding: 0; 
 	
+}
+
+.search-bar{ 
+	width: 90vw;
 }
 
