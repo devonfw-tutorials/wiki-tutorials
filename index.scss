@@ -122,11 +122,14 @@
 		padding-left: 1rem;
 		padding-right: 1rem;
 	}
+
+}
+
+@media (max-width: 767.98px) { 
 	.card {
 		padding: 0;
 	}
 	.tutorials{
 		padding: 0;
 	}
-
 }
