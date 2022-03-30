@@ -1,5 +1,7 @@
 #content {
-	margin-left: 1vw;
+	
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .tutorial_container{
@@ -104,12 +106,17 @@
 }
 
 .search-div{
-	margin: 0 2rem 1rem 2rem;
-	padding: 0; 
-	
+	padding-left: 2rem;
+	padding-right: 3rem;
+	margin-bottom: 2rem;
 }
 
 .search-bar{ 
-	width: 90vw;
+    width: -webkit-fill-available
 }
 
+@media (max-width: 991.98px) {
+	.search-div{
+		padding-right: 2rem;
+	}
+}
