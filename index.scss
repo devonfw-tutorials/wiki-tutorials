@@ -12,10 +12,10 @@
 }
 
 .filter{
-  min-height: 90vh;
   padding: 0;
   margin: 0;
   width: fit-content;
+  min-height: fit-content;
 }
 
 .tutorials{
@@ -117,5 +117,9 @@
 @media (max-width: 991.98px) {
 	.search-div{
 		padding-right: 2rem;
+	}
+	#content {
+		padding-left: 1rem;
+		padding-right: 1rem;
 	}
 }
